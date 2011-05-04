@@ -1,6 +1,6 @@
 prime-ng documentation
 
-Version v1.1
+Version v1.1.1
 
 I have found a way to use the nvidia card in machines WITHOUT the optimus
 mux...
@@ -243,3 +243,5 @@ and run:
 chmod +x /usr/bin/gnome-session-vgl
 
 The Accelerated sessions should now be available in gdm or kdm..
+
+KDM doesn't work with Desktop Effects, but everything else seems to work..
