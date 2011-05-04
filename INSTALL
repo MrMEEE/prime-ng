@@ -258,8 +258,8 @@ Create: /usr/share/xsessions/gnome-vgl.desktop:
 
 [Desktop Entry]
 Type=XSession
-Exec=gnome-session-xgl
-TryExec=gnome-session-xgl
+Exec=/usr/bin/gnome-session-vgl
+TryExec=/usr/bin/gnome-session-vgl
 Name=GNOME Nvidia Accelerated
 Comment=The GNU Network Object Model Environment. A complete, free and
 easy-to-use desktop environment
