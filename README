@@ -1,0 +1,7 @@
+This project is containing the documentation of prime-ng..
+
+prime-ng is Optimus support for Linux, with real offloading, and not
+switchable graphics.. More important.. it works on Optimus Laptops without a
+graphical multiplexer..
+
+Read INSTALL for details...
