@@ -1,0 +1,245 @@
+prime-ng documentation
+
+Version v1.1
+
+I have found a way to use the nvidia card in machines WITHOUT the optimus
+mux...
+
+There are still a few flaws... but in my regard they are few...
+
+This has been testet succesful on:
+Machine 		User
+Alienware M11X R2 	Martin Juhl
+Asus N82Jv 		André Ventura
+	
+
+First of all I have this running on my Alienware M11X R2, on Ubuntu Natty
+11.04 64-bit.. And haven't tried it on any other configurations.. so I hope
+you can report back, if it works on other laptops (it should) and other
+distributions....
+
+
+Up's:
+
+We got nvidia acceleration on our Linux games and programs.. wine as well..
+
+
+Down's:
+
+A few programs doesn't work.. this far I have only found Diablo 2.. which
+gives some weird double/single buffer error in wine...
+
+Still not transparent switching like in Window$.. but a big step the right
+way..
+
+No acceleration from the Intel card.. so Nvidia 3D or none...
+
+Vdpau doesn't seem to be working..
+
+Drains battery pretty fast...
+
+
+Further Idea's:
+
+Combine this with the acpi module hack, to get more battery time, when the
+Nvidia card is not used.. auto-shutdown??
+
+Maybe a seperate X-server for the Nvidia card is the way to go, so we can
+shut that down as well when not used..
+
+Try to get both the Intel and the Nvidia libraries installed at the same
+time, so that 3D is enabled for both cards..
+
+
+
+Here it goes:
+
+First of all download the following:
+
+General:
+
+http://www.martin-juhl.dk/optimus/xorg.conf
+
+32-bit deb-based:
+
+http://www.martin-juhl.dk/optimus/turbojpeg_1.11.1_i386.deb
+
+http://www.martin-juhl.dk/optimus/VirtualGL_2.2.1_i386.deb
+
+64-bit deb-based:
+
+http://www.martin-juhl.dk/optimus/turbojpeg_1.11.1_amd64.deb
+
+http://www.martin-juhl.dk/optimus/VirtualGL_2.2.1_amd64.deb
+
+32-bit rpm-based:
+
+http://www.martin-juhl.dk/optimus/turbojpeg-1.11.i386.rpm
+
+http://www.martin-juhl.dk/optimus/VirtualGL-2.2.1.i386.rpm
+
+64-bit rpm-based:
+
+http://www.martin-juhl.dk/optimus/turbojpeg-1.11.x86_64.rpm
+
+http://www.martin-juhl.dk/optimus/VirtualGL-2.2.1.x86_64.rpm
+
+Source:
+
+http://www.martin-juhl.dk/optimus/turbojpeg-ipp-1.11.1.tar.gz
+
+http://www.martin-juhl.dk/optimus/VirtualGL-2.2.1.tar.gz
+
+Files can also be found here:
+
+http://sourceforge.net/projects/virtualgl/files/
+
+Ok... Installation:
+
+Start by installing the nvidia driver:
+
+sudo aptitude install nvidia-current     (ubuntu)
+
+then put the xorg.conf in /etc/X11/
+
+It might be necessary to change the BUSID's for the Intel and Nvidia Card..
+
+Here is what I got this far:
+
+Laptop 		Intel BusID 	Nvidia BusID
+Alienware M11X 	PCI:0:2:0 	PCI:1:0:0
+Dell XPS 15 	PCI:0:2:0 	PCI:2:0:0
+
+after that, install the two files you downloaded above:
+
+sudo dpkg -i turbojpeg*  VirtualGL*        (deb)
+
+or
+
+sudo rpm -ihv turbojpeg*  VirtualGL*     (rpm)
+
+Now run:
+
+sudo vglserver_config
+
+answer as below:
+
+1) Configure server for use with VirtualGL in GLX mode
+2) Unconfigure server for use with VirtualGL in GLX mode
+X) Exit
+
+Choose:
+1
+
+Restrict 3D X server access to vglusers group (recommended)?
+[Y/n]
+n
+
+Restrict framebuffer device access to vglusers group (recommended)?
+[Y/n]
+n
+
+Disable XTEST extension (recommended)?
+[Y/n]
+y
+... Creating /etc/modprobe.d/virtualgl.conf to set requested permissions for
+/dev/nvidia* ...
+... Attempting to remove nvidia module from memory so device permissions
+will be reloaded ...
+ERROR: Module nvidia is in use
+... Granting write permission to /dev/nvidia0 /dev/nvidiactl for all users
+...
+... Modifying /etc/X11/xorg.conf to enable DRI permissions for
+all users ...
+... Adding xhost +LOCAL: to /etc/kde4/kdm/Xsetup script ...
+... Disabling XTEST extension in /etc/kde4/kdm/kdmrc ...
+
+Done. You must restart the display manager for the changes to take effect.
+
+IMPORTANT NOTE: Your system uses modprobe.d to set device permissions. You
+must execute rmmod nvidia with the display manager stopped in order for the
+new device permission settings to become effective.
+
+1) Configure server for use with VirtualGL in GLX mode
+2) Unconfigure server for use with VirtualGL in GLX mode
+X) Exit
+
+Choose:
+x
+
+Then:
+
+append the following two lines to /etc/profile or to your ~/.bashrc if that
+exists..
+
+VGL_DISPLAY=:0.1
+export VGL_DISPLAY
+
+and reboot...
+
+Hopefully your computer comes back up..
+
+now you should be able to start applications with:
+
+vglrun <application>
+
+and the nvidia card will be used for acceleration..
+
+btw. <application> needs to contain the full path to the application if not
+in the path...
+
+It is still the Intel card running the rest.. and for now I haven't found a
+way to activate acceleration for both cards.. so no fancy compiz effects..
+but thats no problem for me, as long as I can use my nvidia card for gaming
+:D...
+
+Hope this will help someone..
+
+Nvidia Always on in Gnome or KDE:
+
+This is experimental.. might be unforeseen problems:
+
+KDE:
+
+Create: /usr/share/xsessions/kde-plasma-vgl.desktop:
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Exec=/usr/bin/startkde-vgl
+TryExec=/usr/bin/startkde-vgl
+Name=KDE Plasma Workspace Nvidia Accelerated
+Comment=The desktop made by KDE
+
+Create: /usr/bin/startkde-vgl:
+
+#!/bin/bash
+/usr/bin/vglrun -d :0.1 /usr/bin/startkde
+
+and run:
+
+chmod +x /usr/bin/startkde-vgl
+
+Gnome:
+
+Create: /usr/share/xsessions/gnome-vgl.desktop:
+
+[Desktop Entry]
+Type=XSession
+Exec=gnome-session-xgl
+TryExec=gnome-session-xgl
+Name=GNOME Nvidia Accelerated
+Comment=The GNU Network Object Model Environment. A complete, free and
+easy-to-use desktop environment
+X-Ubuntu-Gettext-Domain=desktop_kdebase-workspace
+
+Create: /usr/bin/gnome-session-vgl:
+
+#!/bin/bash
+/usr/bin/vglrun -d :0.1 /usr/bin/gnome-session
+
+and run:
+
+chmod +x /usr/bin/gnome-session-vgl
+
+The Accelerated sessions should now be available in gdm or kdm..
