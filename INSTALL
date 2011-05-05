@@ -1,6 +1,6 @@
 prime-ng Documentation
 
-Version v1.3
+Version v1.3.1
 
 I have found a way to use the nvidia card in machines WITHOUT the optimus
 mux...
@@ -182,7 +182,7 @@ exists..
 
 VGL_DISPLAY=:0.1
 export VGL_DISPLAY
-VGL_COMPRESS=jpeg
+VGL_COMPRESS=yuv
 export VGL_COMPRESS
 
 Now you need to make sure that your Desktop Enviroment runs the following
