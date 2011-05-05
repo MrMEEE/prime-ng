@@ -1,6 +1,6 @@
-prime-ng documentation
+prime-ng Documentation
 
-Version v1.2
+Version v1.3
 
 I have found a way to use the nvidia card in machines WITHOUT the optimus
 mux...
@@ -11,6 +11,10 @@ This has been testet succesful on:
 Machine 		User
 Alienware M11X R2 	Martin Juhl
 Asus N82Jv 		André Ventura
+Acer EeePC 1215N 	Santos Ellington
+Asus N61Jv (X64Jv) 	Ted
+Acer Aspire 5745PG 	Miguel Belmonte
+Dell Vostro 3300 	Peter Liedler
 	
 
 First of all I have this running on my Alienware M11X R2, on Ubuntu Natty
@@ -102,13 +106,17 @@ sudo aptitude install nvidia-current     (ubuntu)
 
 then put the xorg.conf in /etc/X11/
 
-It might be necessary to change the BUSID's for the Intel and Nvidia Card..
+It might be necessary to change the “ConnectedMonitor” under the Nvidia-device section and BUSID’s for the Intel and Nvidia Card..
 
 Here is what I got this far:
 
-Laptop 		Intel BusID 	Nvidia BusID
-Alienware M11X 	PCI:0:2:0 	PCI:1:0:0
-Dell XPS 15 	PCI:0:2:0 	PCI:2:0:0
+Laptop 			Intel BusID 	Nvidia BusID 	ConnectedMonitor
+Alienware M11X 		PCI:0:2:0 	PCI:1:0:0 	CRT-0
+Dell XPS 15 		PCI:0:2:0 	PCI:2:0:0 	CRT-0
+Asus N61Jv (X64Jv) 	PCI:0:2:0 	PCI:1:0:0 	CRT-0
+Acer EeePC 1215N 	PCI:0:2:0 	PCI:4:0:0 	DFP-0
+Acer Aspire 5745PG 	PCI:0:2:0 	PCI:1:0:0 	DFP-0
+Dell Vostro 3300 	PCI:0:2:0 	PCI:1:0:0 	DFP-0
 
 after that, install the two files you downloaded above:
 
