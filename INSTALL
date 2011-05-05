@@ -1,6 +1,6 @@
 prime-ng Documentation
 
-Version v1.4
+Version v1.4.1
 
 I have found a way to use the nvidia card in machines WITHOUT the optimus
 mux...
@@ -30,8 +30,14 @@ We got nvidia acceleration on our Linux games and programs.. wine as well..
 
 Down's:
 
-A few programs doesn't work.. this far I have only found Diablo 2.. which
-gives some weird double/single buffer error in wine...
+//A few programs doesn't work.. this far I have only found Diablo 2.. which
+//gives some weird double/single buffer error in wine...
+
+This seems to be a Nvidia problem in general, and nothing to do with this
+solution.. Diablo works with the -w parameter for window mode, and other
+people with just an Nvidia card is reporting this problem as well.. 
+
+
 
 Still not transparent switching like in Window$.. but a big step the right
 way..
