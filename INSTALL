@@ -184,6 +184,8 @@ VGL_DISPLAY=:0.1
 export VGL_DISPLAY
 VGL_COMPRESS=yuv
 export VGL_COMPRESS
+VGL_READBACK=fbo
+export VGL_READBACK
 
 Now you need to make sure that your Desktop Enviroment runs the following
 command after starting up..
