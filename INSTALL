@@ -1,6 +1,6 @@
 prime-ng Documentation
 
-Version v1.4.1
+Version v1.4.2
 
 I have found a way to use the nvidia card in machines WITHOUT the optimus
 mux...
@@ -46,7 +46,9 @@ No acceleration from the Intel card.. so Nvidia 3D or none...
 
 Vdpau doesn't seem to be working..
 
-Drains battery pretty fast...
+//Drains battery pretty fast...
+
+Not as bad as I feared... got battery for 2+ hours...
 
 
 Further Idea's:
