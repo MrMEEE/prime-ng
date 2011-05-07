@@ -1,4 +1,14 @@
-This project is containing the documentation of prime-ng..
+#
+# ----------------------------------------------------------------------------
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <mj@casalogic.dk> wrote this file. As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you
+# think
+# this stuff is worth it, you can buy me a beer in return Martin Juhl
+# ----------------------------------------------------------------------------
+#
+
+This project is containing prime-ng..
 
 prime-ng is Optimus support for Linux, with real offloading, and not
 switchable graphics.. More important.. it works on Optimus Laptops without a
@@ -35,3 +45,6 @@ Asus N61Jv (X64Jv)	Ted
 Acer Aspire 5745PG	Miguel Belmonte
 Dell Vostro 3300	Peter Liedler
 Acer EeePC 1215N	Fedor Indutny
+
+Status updates can be found here: http://www.martin-juhl.dk or on twitter
+http://twitter.com/martinjuhl
