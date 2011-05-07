@@ -4,4 +4,23 @@ prime-ng is Optimus support for Linux, with real offloading, and not
 switchable graphics.. More important.. it works on Optimus Laptops without a
 graphical multiplexer..
 
-Read INSTALL for details...
+Version 2.0 of the prime-ng project has been release!!!
+
+The Installation should now be completely automatic...
+
+
+Now 3D is enabled on both the Intel and the nVidia at the same time..
+
+The Intel card is running the Desktop and the nVidia card can be used for
+the thougher applications with the command "optirun32 <application>" or
+"optirun64 <application>"...
+
+So now we just need somebody to write an application for automatically
+balance which applications should be run on which card.. and shut the nVidia
+card down, when not used..
+
+But still I think it is a good step forward...
+
+Just download the install.sh and the install-files folder..
+
+I left the old releases up there in the old/ folder.. if someone needs it..
