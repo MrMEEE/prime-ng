@@ -8,43 +8,9 @@
 # ----------------------------------------------------------------------------
 #
 
-This project is containing prime-ng..
+The prime-ng project has been renamed to bumblebee and is available here:
 
-prime-ng is Optimus support for Linux, with real offloading, and not
-switchable graphics.. More important.. it works on Optimus Laptops without a
-graphical multiplexer..
-
-Version 2.0 of the prime-ng project has been release!!!
-
-The Installation should now be completely automatic...
-
-
-Now 3D is enabled on both the Intel and the nVidia at the same time..
-
-The Intel card is running the Desktop and the nVidia card can be used for
-the thougher applications with the command "optirun32 <application>" or
-"optirun64 <application>"...
-
-So now we just need somebody to write an application for automatically
-balance which applications should be run on which card.. and shut the nVidia
-card down, when not used..
-
-But still I think it is a good step forward...
-
-Just download the install.sh and the install-files folder..
-
-I left the old releases up there in the old/ folder.. if someone needs it..
-
-Machines Confirmed Working:
-
-Machine			User
-Alienware M11X R2	Martin Juhl
-Asus N82Jv		André Ventura
-Asus EeePC 1215N	Ellington Santos
-Asus N61Jv (X64Jv)	Ted
-Acer Aspire 5745PG	Miguel Belmonte
-Dell Vostro 3300	Peter Liedler
-Acer EeePC 1215N	Fedor Indutny
+https://github.com/MrMEEE/bumblebee
 
 Status updates can be found here: http://www.martin-juhl.dk or on twitter
 http://twitter.com/martinjuhl
